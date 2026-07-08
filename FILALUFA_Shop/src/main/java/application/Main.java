@@ -21,7 +21,6 @@ public class Main extends Application {
         stage.setResizable(true);
         stage.centerOnScreen();
         stage.show();
-        //ABIDIN HABSYI GANTENG SEKALI
 
     }
 
