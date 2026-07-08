@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Pos?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.DashboardAdmin"
+            prefWidth="1300.0"
+            prefHeight="750.0">
+
+    <left>
+        <VBox prefWidth="240" spacing="10"
+              style="-fx-background-color:#1976D2;">
+
+            <padding>
+                <Insets top="20" left="15" right="15" bottom="20"/>
+            </padding>
+
+            <Label text="FILALUFA SHOP" textFill="WHITE">
+                <font><Font size="24"/></font>
+            </Label>
+
+            <Separator/>
+
+            <Button fx:id="btnDashboard" text="Dashboard"
+                    maxWidth="Infinity" prefHeight="40"
+                    onAction="#dashboard"/>
+
+            <TitledPane text="Master" expanded="true">
+                <content>
+                    <VBox spacing="8">
+                        <Button fx:id="btnMasterUser" text="Master User"
+                                maxWidth="Infinity"
+                                onAction="#masterUser"/>
+                        <Button fx:id="btnSupplier" text="Master Supplier"
+                                maxWidth="Infinity"
+                                onAction="#masterSupplier"/>
+                        <Button fx:id="btnProduk" text="Master Produk"
+                                maxWidth="Infinity"
+                                onAction="#masterProduk"/>
+                        <Button fx:id="btnPelanggan" text="Master Pelanggan"
+                                maxWidth="Infinity"
+                                onAction="#masterPelanggan"/>
+                        <Button fx:id="btnJenisMember" text="Jenis Member"
+                                maxWidth="Infinity"
+                                onAction="#masterJenisMember"/>
+                        <Button fx:id="btnDiskon" text="Master Diskon"
+                                maxWidth="Infinity"
+                                onAction="#masterDiskon"/>
+                    </VBox>
+                </content>
+            </TitledPane>
+
+            <TitledPane text="Transaksi" expanded="true">
+                <content>
+                    <VBox spacing="8">
+                        <Button fx:id="btnPembelian" text="Pembelian"
+                                maxWidth="Infinity"
+                                onAction="#transaksiPembelian"/>
+
+                    </VBox>
+                </content>
+            </TitledPane>
+
+
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <Button fx:id="btnLogout"
+                    text="Logout"
+                    maxWidth="Infinity"
+                    prefHeight="40"
+                    onAction="#logout"
+                    style="-fx-background-color:#EF5350;-fx-text-fill:white;"/>
+
+        </VBox>
+    </left>
+
+    <top>
+        <HBox alignment="CENTER_LEFT"
+              spacing="15"
+              style="-fx-background-color:#42A5F5;-fx-padding:15;">
+
+            <Label text="Dashboard Admin"
+                   textFill="WHITE">
+                <font><Font size="24"/></font>
+            </Label>
+
+        </HBox>
+    </top>
+
+    <center>
+
+        <StackPane fx:id="contentPane"
+                   style="-fx-background-color:#F5F9FF;">
+
+            <VBox alignment="CENTER"
+                  spacing="15">
+
+                <Label text="Selamat Datang di FILALUFA SHOP">
+                    <font><Font size="28"/></font>
+                </Label>
+
+                <Label text="Silakan pilih menu di sebelah kiri."/>
+
+            </VBox>
+
+        </StackPane>
+
+    </center>
+
+</BorderPane>

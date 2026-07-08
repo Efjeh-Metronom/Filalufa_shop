@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="450.0" prefWidth="850.0"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.MasterJenisMember"
+            style="-fx-background-color:#F5F7FA;">
+
+    <children>
+
+        <Label layoutX="20" layoutY="15"
+               text="MASTER JENIS MEMBER"
+               style="-fx-font-size:24px;
+                      -fx-font-weight:bold;
+                      -fx-text-fill:#2C3E50;"/>
+
+        <VBox layoutX="20"
+              layoutY="55"
+              prefWidth="290"
+              spacing="8"
+              style="-fx-background-color:white;
+                     -fx-padding:15;
+                     -fx-background-radius:10;
+                     -fx-border-radius:10;
+                     -fx-border-color:#D6DBDF;">
+
+            <Label text="ID Jenis Member"/>
+            <TextField fx:id="txtIDJenisMember"
+                       editable="false"/>
+
+            <Label text="Nama Jenis Member"/>
+            <TextField fx:id="txtNamaJenisMember"/>
+
+            <Label text="Minimum Point"/>
+            <TextField fx:id="txtMinimumPoint"/>
+
+            <Label text="Kelipatan Point"/>
+            <TextField fx:id="txtKelipatanPoint"/>
+
+            <HBox spacing="8">
+
+                <Button fx:id="btnSimpan"
+                        text="Simpan"
+                        prefWidth="90"
+                        onAction="#saveJenisMember"/>
+
+                <Button fx:id="btnUbah"
+                        text="Ubah"
+                        prefWidth="90"
+                        onAction="#updateJenisMember"/>
+
+            </HBox>
+
+            <HBox spacing="8">
+
+                <Button fx:id="btnHapus"
+                        text="Hapus"
+                        prefWidth="90"
+                        onAction="#deleteJenisMember"/>
+
+                <Button fx:id="btnKembali"
+                        text="Kembali"
+                        prefWidth="90"
+                        onAction="#backDashboard"/>
+
+            </HBox>
+
+        </VBox>
+
+        <TableView fx:id="tblJenisMember"
+                   layoutX="330"
+                   layoutY="55"
+                   prefWidth="500"
+                   prefHeight="370">
+
+            <columns>
+
+                <TableColumn fx:id="colId"
+                             text="ID"
+                             prefWidth="80"/>
+
+                <TableColumn fx:id="colNama"
+                             text="Nama Jenis Member"
+                             prefWidth="200"/>
+
+                <TableColumn fx:id="colMinimum"
+                             text="Minimum Point"
+                             prefWidth="110"/>
+
+                <TableColumn fx:id="colKelipatan"
+                             text="Kelipatan Point"
+                             prefWidth="110"/>
+
+            </columns>
+
+        </TableView>
+
+    </children>
+
+</AnchorPane>

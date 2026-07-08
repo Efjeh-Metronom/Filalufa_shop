@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="450.0" prefWidth="850.0"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.MasterUser"
+            style="-fx-background-color:#F5F7FA;">
+
+    <children>
+
+        <Label layoutX="20" layoutY="15"
+               text="MASTER USER"
+               style="-fx-font-size:24px;
+                      -fx-font-weight:bold;
+                      -fx-text-fill:#2C3E50;"/>
+
+        <VBox layoutX="20"
+              layoutY="55"
+              prefWidth="290"
+              spacing="8"
+              style="-fx-background-color:white;
+                     -fx-padding:15;
+                     -fx-background-radius:10;
+                     -fx-border-radius:10;
+                     -fx-border-color:#D6DBDF;">
+
+            <Label text="ID User"/>
+            <TextField fx:id="txtIDUser"
+                       editable="false"/>
+
+            <Label text="Username"/>
+            <TextField fx:id="txtUsername"/>
+
+            <Label text="Password"/>
+            <PasswordField fx:id="txtPassword"/>
+
+            <Label text="Nama User"/>
+            <TextField fx:id="txtNamaUser"/>
+
+            <Label text="No Telepon"/>
+            <TextField fx:id="txtTelepon"/>
+
+            <Label text="Email"/>
+            <TextField fx:id="txtEmail"/>
+
+            <Label text="Status"/>
+            <ComboBox fx:id="cmbStatus"/>
+
+            <Label text="Role"/>
+            <ComboBox fx:id="cmbRole"/>
+
+            <HBox spacing="8">
+
+                <Button fx:id="btnSimpan"
+                        text="Simpan"
+                        prefWidth="90"
+                        onAction="#saveUser"/>
+
+                <Button fx:id="btnUbah"
+                        text="Ubah"
+                        prefWidth="90"
+                        onAction="#updateUser"/>
+
+            </HBox>
+
+            <HBox spacing="8">
+
+                <Button fx:id="btnHapus"
+                        text="Hapus"
+                        prefWidth="90"
+                        onAction="#deleteUser"/>
+
+                <Button fx:id="btnKembali"
+                        text="Kembali"
+                        prefWidth="90"
+                        onAction="#backDashboard"/>
+
+            </HBox>
+
+        </VBox>
+
+        <TableView fx:id="tblUser"
+                   layoutX="330"
+                   layoutY="55"
+                   prefWidth="500"
+                   prefHeight="370">
+
+            <columns>
+
+                <TableColumn fx:id="colId"
+                             text="ID"
+                             prefWidth="60"/>
+
+                <TableColumn fx:id="colUsername"
+                             text="Username"
+                             prefWidth="90"/>
+
+                <TableColumn fx:id="colNama"
+                             text="Nama User"
+                             prefWidth="120"/>
+
+                <TableColumn fx:id="colTelepon"
+                             text="Telepon"
+                             prefWidth="90"/>
+
+                <TableColumn fx:id="colEmail"
+                             text="Email"
+                             prefWidth="140"/>
+
+                <TableColumn fx:id="colStatus"
+                             text="Status"
+                             prefWidth="80"/>
+
+                <TableColumn fx:id="colRole"
+                             text="Role"
+                             prefWidth="70"/>
+
+            </columns>
+
+        </TableView>
+
+    </children>
+
+</AnchorPane>

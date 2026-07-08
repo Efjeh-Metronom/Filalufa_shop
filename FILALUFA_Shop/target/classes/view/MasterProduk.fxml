@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color:#F5F7FA;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MasterProduk">
+
+    <children>
+
+        <Label layoutX="20" layoutY="15" style="-fx-font-size:24px;                       -fx-font-weight:bold;                       -fx-text-fill:#2C3E50;" text="MASTER PRODUK" />
+
+        <VBox layoutX="20" layoutY="55" prefWidth="320" spacing="8" style="-fx-background-color:white;                      -fx-padding:15;                      -fx-background-radius:10;                      -fx-border-radius:10;                      -fx-border-color:#D6DBDF;">
+
+            <Label text="ID Produk" />
+            <TextField fx:id="txtIdProduk" editable="false" />
+
+            <Label text="Kode Produk" />
+            <TextField fx:id="txtKodeProduk" />
+
+            <Label text="Nama Produk" />
+            <TextField fx:id="txtNamaProduk" />
+
+            <Label text="Kategori" />
+            <TextField fx:id="txtKategori" />
+
+            <Label text="Harga Beli" />
+            <TextField fx:id="txtHargaBeli" />
+
+            <Label text="Harga Jual" />
+            <TextField fx:id="txtHargaJual" />
+
+            <Label text="Stok" />
+            <TextField fx:id="txtStok" />
+
+            <Label text="Diskon" />
+            <ComboBox fx:id="cmbDiskon" promptText="Pilih Diskon" />
+
+            <Label text="Status" />
+            <ComboBox fx:id="cmbStatus" promptText="Pilih Status" />
+
+            <HBox spacing="8">
+
+                <Button fx:id="btnSimpan" onAction="#saveProduk" prefWidth="90" text="Simpan" />
+
+                <Button fx:id="btnUbah" onAction="#updateProduk" prefWidth="90" text="Ubah" />
+
+            </HBox>
+
+            <HBox spacing="8">
+
+                <Button fx:id="btnHapus" onAction="#deleteProduk" prefWidth="90" text="Hapus" />
+
+                <Button fx:id="btnReset" onAction="#resetForm" prefWidth="90" text="Reset" />
+
+            </HBox>
+            <ComboBox prefWidth="150.0" />
+
+        </VBox>
+
+        <TableView fx:id="tblProduk" layoutX="360" layoutY="55" prefHeight="420" prefWidth="620">
+
+            <columns>
+
+                <TableColumn fx:id="colIdProduk" prefWidth="50" text="ID" />
+
+                <TableColumn fx:id="colKodeProduk" prefWidth="90" text="Kode" />
+
+                <TableColumn fx:id="colNamaProduk" prefWidth="160" text="Nama Produk" />
+
+                <TableColumn fx:id="colKategori" prefWidth="100" text="Kategori" />
+
+                <TableColumn fx:id="colHargaBeli" prefWidth="100" text="Harga Beli" />
+
+                <TableColumn fx:id="colHargaJual" prefWidth="100" text="Harga Jual" />
+
+                <TableColumn fx:id="colStok" prefWidth="70" text="Stok" />
+
+                <TableColumn fx:id="colDiskon" prefWidth="90" text="Diskon" />
+
+            </columns>
+
+        </TableView>
+
+    </children>
+
+</AnchorPane>

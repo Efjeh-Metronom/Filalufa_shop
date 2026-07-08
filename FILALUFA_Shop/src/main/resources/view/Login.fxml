@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane prefHeight="720" prefWidth="1280" style="-fx-background-color:#EAF3FF;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+
+    <HBox maxHeight="620" maxWidth="1100" prefHeight="620" prefWidth="1100" style="-fx-background-color:white;                  -fx-background-radius:20;                  -fx-effect:dropshadow(gaussian,rgba(0,0,0,0.20),25,0,0,8);">
+
+        <!-- ================================================= -->
+        <!-- PANEL KIRI -->
+        <!-- ================================================= -->
+
+        <VBox alignment="CENTER" prefWidth="430" spacing="20" style="-fx-background-color:linear-gradient(to bottom,#0D47A1,#1976D2,#42A5F5);                      -fx-background-radius:20 0 0 20;">
+
+            <padding>
+                <Insets bottom="40" left="30" right="30" top="40" />
+            </padding>
+
+            <!-- Logo -->
+
+            <Label style="-fx-font-size:70;" text="🛒" />
+
+            <Label style="-fx-text-fill:white;                           -fx-font-size:32;                           -fx-font-weight:bold;" text="FILALUFA SHOP" />
+
+            <Label alignment="CENTER" style="-fx-text-fill:white;                           -fx-font-size:18;" text="Sistem Toko Sembako" wrapText="true" />
+
+            <Separator prefWidth="250" />
+
+            <Label alignment="CENTER" style="-fx-text-fill:white;                           -fx-font-size:16;" text="Belanja Lebih Cepat dan Pelayanan Lebih Mudah" wrapText="true" />
+
+            <Region VBox.vgrow="ALWAYS" />
+
+
+            <Label style="-fx-text-fill:white;" text="f2026 FILALUFA SHOP" />
+
+        </VBox>
+
+        <!-- ================================================= -->
+        <!-- PANEL KANAN -->
+        <!-- ================================================= -->
+
+        <StackPane HBox.hgrow="ALWAYS">
+
+            <VBox alignment="CENTER" maxWidth="360" spacing="18">
+
+                <Label text="LOGIN">
+
+                    <font>
+                        <Font size="30" />
+                    </font>
+
+                </Label>
+
+                <Label style="-fx-text-fill:#607D8B;                               -fx-font-size:15;" text="Selamat Datang Kembali" />
+
+                <VBox spacing="8">
+
+                    <Label style="-fx-font-size:14;                                   -fx-font-weight:bold;" text="Username" />
+
+                    <TextField fx:id="txtUsername" prefHeight="45" promptText="Masukkan Username" style="-fx-background-radius:10;                                       -fx-border-radius:10;                                       -fx-border-color:#CFD8DC;                                       -fx-font-size:14;" />
+
+                </VBox>
+
+                <VBox spacing="8">
+
+                    <Label style="-fx-font-size:14;                                   -fx-font-weight:bold;" text="Password" />
+
+                    <PasswordField fx:id="txtPassword" prefHeight="45" promptText="Masukkan Password" style="-fx-background-radius:10;                                           -fx-border-radius:10;                                           -fx-border-color:#CFD8DC;                                           -fx-font-size:14;" />
+
+                </VBox>
+
+                <Button fx:id="btnLogin" onAction="#login" prefHeight="48" prefWidth="340" style="-fx-background-color:#1976D2;                                -fx-background-radius:10;                                -fx-text-fill:white;                                -fx-font-size:15;                                -fx-font-weight:bold;" text="LOGIN" />
+
+                <Button fx:id="btnKeluar" onAction="#keluar" prefHeight="45" prefWidth="340" style="-fx-background-color:white;                                -fx-border-color:#EF5350;                                -fx-border-radius:10;                                -fx-background-radius:10;                                -fx-text-fill:#EF5350;                                -fx-font-weight:bold;" text="KELUAR" />
+
+                <Label alignment="CENTER" style="-fx-text-fill:#90A4AE;                               -fx-font-size:12;" text="Masukkan username dan password untuk melanjutkan." wrapText="true" />
+
+            </VBox>
+
+        </StackPane>
+
+    </HBox>
+
+</StackPane>

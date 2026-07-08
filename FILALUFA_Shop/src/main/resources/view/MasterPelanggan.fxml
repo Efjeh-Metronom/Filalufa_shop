@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Pos?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane
+        xmlns="http://javafx.com/javafx/21"
+        xmlns:fx="http://javafx.com/fxml"
+        fx:controller="controller.MasterPelanggan"
+        prefWidth="1400"
+        prefHeight="850"
+        stylesheets="@../css/MasterPelanggan.css"
+        styleClass="root-layout">
+
+    <top>
+        <HBox
+                alignment="CENTER_LEFT"
+                spacing="15"
+                prefHeight="80"
+                styleClass="header">
+            <children>
+                <VBox spacing="4">
+                    <children>
+                        <Label text="MASTER PELANGGAN"
+                               styleClass="header-title"/>
+                        <Label text="Kelola Data Pelanggan dan Membership"
+                               style="-fx-text-fill:#DCE8FF; -fx-font-size:13px;"/>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+    </top>
+
+    <center>
+        <HBox spacing="20" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <children>
+
+                <VBox prefWidth="360"
+                      spacing="15"
+                      style="-fx-background-color:white;
+                             -fx-background-radius:15;
+                             -fx-border-radius:15;
+                             -fx-border-color:#E5E7EB;
+                             -fx-padding:20;">
+
+                    <children>
+
+                        <Label text="DATA PELANGGAN"
+                               style="-fx-font-size:18px;-fx-font-weight:bold;-fx-text-fill:#1E3A8A;"/>
+
+                        <Label text="ID Pelanggan"/>
+                        <TextField fx:id="txtIDPelanggan" editable="false"/>
+
+                        <Label text="Nama Pelanggan"/>
+                        <TextField fx:id="txtNamaPelanggan"/>
+
+                        <Label text="No Telepon"/>
+                        <TextField fx:id="txtNoTelepon"/>
+
+                        <Separator/>
+
+                        <Label text="PROGRAM MEMBERSHIP"
+                               style="-fx-font-size:16px;-fx-font-weight:bold;"/>
+
+                        <CheckBox fx:id="chkMember"
+                                  text="Daftarkan sebagai Member"/>
+
+                        <Label text="Jenis Member"/>
+                        <ComboBox fx:id="cmbJenisMember"
+                                  disable="true"
+                                  promptText="Bronze"/>
+
+                        <Label text="Poin Aktif"/>
+                        <TextField fx:id="txtPoinAktif"
+                                   editable="false"
+                                   text="0"/>
+
+                        <Label text="Total Poin Terkumpul"/>
+                        <TextField fx:id="txtTotalPoin"
+                                   editable="false"
+                                   text="0"/>
+
+                        <Separator/>
+
+                        <GridPane hgap="10" vgap="10">
+
+                            <Button fx:id="btnTambah"
+                                    GridPane.columnIndex="0"
+                                    GridPane.rowIndex="0"
+                                    text="Tambah"
+                                    prefWidth="145"
+                                    style="-fx-background-color:#22C55E;-fx-text-fill:white;"/>
+
+                            <Button fx:id="btnSimpan"
+                                    GridPane.columnIndex="1"
+                                    GridPane.rowIndex="0"
+                                    text="Simpan"
+                                    prefWidth="145"
+                                    style="-fx-background-color:#2563EB;-fx-text-fill:white;"/>
+
+                            <Button fx:id="btnUbah"
+                                    GridPane.columnIndex="0"
+                                    GridPane.rowIndex="1"
+                                    text="Ubah"
+                                    prefWidth="145"
+                                    style="-fx-background-color:#F59E0B;-fx-text-fill:white;"/>
+
+                            <Button fx:id="btnHapus"
+                                    GridPane.columnIndex="1"
+                                    GridPane.rowIndex="1"
+                                    text="Hapus"
+                                    prefWidth="145"
+                                    style="-fx-background-color:#EF4444;-fx-text-fill:white;"/>
+
+                            <Button fx:id="btnBatal"
+                                    GridPane.columnIndex="0"
+                                    GridPane.columnSpan="2"
+                                    GridPane.rowIndex="2"
+                                    prefWidth="300"
+                                    text="Batal"
+                                    style="-fx-background-color:#6B7280;-fx-text-fill:white;"/>
+
+                        </GridPane>
+
+                    </children>
+
+                </VBox>
+
+                <VBox HBox.hgrow="ALWAYS"
+                      spacing="15"
+                      style="-fx-background-color:white;
+                             -fx-background-radius:15;
+                             -fx-border-radius:15;
+                             -fx-border-color:#E5E7EB;
+                             -fx-padding:20;">
+
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Cari"/>
+                        <TextField fx:id="txtCari"
+                                   HBox.hgrow="ALWAYS"
+                                   promptText="Cari pelanggan..."/>
+                        <Button fx:id="btnRefresh"
+                                text="Refresh"
+                                styleClass="btn-simpan"/>
+                    </HBox>
+
+                    <TableView fx:id="tblPelanggan" VBox.vgrow="ALWAYS">
+
+                        <columns>
+
+                            <TableColumn fx:id="colID"
+                                         text="ID"
+                                         prefWidth="90"/>
+
+                            <TableColumn fx:id="colNama"
+                                         text="Nama Pelanggan"
+                                         prefWidth="220"/>
+
+                            <TableColumn fx:id="colTelepon"
+                                         text="No Telepon"
+                                         prefWidth="160"/>
+
+                            <TableColumn fx:id="colStatus"
+                                         text="Status"
+                                         prefWidth="110"/>
+
+                            <TableColumn fx:id="colJenis"
+                                         text="Jenis Member"
+                                         prefWidth="150"/>
+
+                            <TableColumn fx:id="colPoinAktif"
+                                         text="Poin Aktif"
+                                         prefWidth="120"/>
+
+                            <TableColumn fx:id="colTotalPoin"
+                                         text="Total Poin"
+                                         prefWidth="140"/>
+
+                        </columns>
+
+                    </TableView>
+
+                </VBox>
+
+            </children>
+
+        </HBox>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER_LEFT"
+              prefHeight="35"
+              style="-fx-background-color:white;-fx-padding:0 15;">
+            <children>
+                <Label fx:id="lblStatus" text="Ready"/>
+            </children>
+        </HBox>
+    </bottom>
+
+</BorderPane>
+
+
+
