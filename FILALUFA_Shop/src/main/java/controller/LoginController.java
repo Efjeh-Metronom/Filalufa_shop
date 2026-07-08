@@ -30,20 +30,11 @@ import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
 
-    //==================================================
-    // DATABASE
-    //==================================================
-
     DBConnect db = new DBConnect();
 
     CallableStatement cs;
 
     ResultSet rs;
-
-    //==================================================
-    // COMPONENT
-    //==================================================
-
     @FXML
     private TextField txtUsername;
 
