@@ -18,7 +18,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -72,11 +71,11 @@ public class MasterSupplier implements Initializable {
     private TextField txtTelepon;
 
     //=========================================================
-    // COMBOBOX
+    // STATUS (OTOMATIS)
     //=========================================================
 
     @FXML
-    private ComboBox<String> cmbStatus;
+    private TextField txtStatus;
 
     @FXML
     private Button btnSimpan;
@@ -86,6 +85,9 @@ public class MasterSupplier implements Initializable {
 
     @FXML
     private Button btnHapus;
+
+    @FXML
+    private Button btnAktifkan;
 
     @FXML
     private Button btnKembali;
@@ -123,13 +125,17 @@ public class MasterSupplier implements Initializable {
 
         initializeTable();
 
-        initializeCombo();
-
         autoID();
+
+        txtStatus.setText("Tersedia");
 
         loadTable();
 
         tableClick();
+
+        btnUbah.setDisable(true);
+        btnHapus.setDisable(true);
+        btnAktifkan.setDisable(true);
 
     }
 
@@ -153,21 +159,6 @@ public class MasterSupplier implements Initializable {
 
         colStatus.setCellValueFactory(
                 new PropertyValueFactory<>("status"));
-
-    }
-
-    //=========================================================
-    // COMBOBOX
-    //=========================================================
-
-    private void initializeCombo() {
-
-        cmbStatus.getItems().addAll(
-
-                "Aktif",
-                "Tidak Aktif"
-
-        );
 
     }
 
@@ -276,11 +267,15 @@ public class MasterSupplier implements Initializable {
                 txtAlamat.setText(supplier.getAlamat());
                 txtTelepon.setText(supplier.getTelepon());
 
-                cmbStatus.setValue(supplier.getStatus());
+                txtStatus.setText(supplier.getStatus());
 
                 btnSimpan.setDisable(true);
-                btnUbah.setDisable(false);
-                btnHapus.setDisable(false);
+
+                boolean nonAktif = "Tidak Tersedia".equalsIgnoreCase(supplier.getStatus());
+
+                btnUbah.setDisable(nonAktif);
+                btnHapus.setDisable(nonAktif);
+                btnAktifkan.setDisable(!nonAktif);
 
             }
 
@@ -299,7 +294,7 @@ public class MasterSupplier implements Initializable {
         txtAlamat.clear();
         txtTelepon.clear();
 
-        cmbStatus.getSelectionModel().clearSelection();
+        txtStatus.setText("Tersedia");
 
         tblSupplier.getSelectionModel().clearSelection();
 
@@ -308,6 +303,7 @@ public class MasterSupplier implements Initializable {
         btnSimpan.setDisable(false);
         btnUbah.setDisable(true);
         btnHapus.setDisable(true);
+        btnAktifkan.setDisable(true);
 
         txtNamaSupplier.requestFocus();
 
@@ -328,6 +324,8 @@ public class MasterSupplier implements Initializable {
 
         try {
 
+            txtStatus.setText("Tersedia");
+
             CallableStatement cs =
                     conn.prepareCall("{call sp_InsertSupplier(?,?,?,?,?)}");
 
@@ -335,7 +333,7 @@ public class MasterSupplier implements Initializable {
             cs.setString(2, txtNamaSupplier.getText());
             cs.setString(3, txtAlamat.getText());
             cs.setString(4, txtTelepon.getText());
-            cs.setString(5, cmbStatus.getValue());
+            cs.setString(5, txtStatus.getText());
 
             cs.execute();
 
@@ -375,7 +373,7 @@ public class MasterSupplier implements Initializable {
             cs.setString(2, txtNamaSupplier.getText());
             cs.setString(3, txtAlamat.getText());
             cs.setString(4, txtTelepon.getText());
-            cs.setString(5, cmbStatus.getValue());
+            cs.setString(5, txtStatus.getText());
 
             cs.execute();
 
@@ -417,14 +415,63 @@ public class MasterSupplier implements Initializable {
 
             try {
 
-                CallableStatement cs =
-                        conn.prepareCall("{call sp_DeleteSupplier(?)}");
+                pst = conn.prepareStatement(
+                        "UPDATE Supplier SET Status = ? WHERE ID_Supplier = ?");
 
-                cs.setString(1, txtIDSupplier.getText());
+                pst.setString(1, "Tidak Tersedia");
+                pst.setString(2, txtIDSupplier.getText());
 
-                cs.execute();
+                pst.executeUpdate();
 
                 alertInformation("Data berhasil dihapus.");
+
+                refreshTable();
+
+                clearForm();
+
+            } catch (Exception e) {
+
+                alertError(e.getMessage());
+
+            }
+
+        }
+
+    }
+
+    //=========================================================
+    // AKTIFKAN KEMBALI (RESTORE SOFT DELETE)
+    //=========================================================
+
+    @FXML
+    private void activateSupplier(ActionEvent event) {
+
+        Alert alert =
+                new Alert(Alert.AlertType.CONFIRMATION);
+
+        alert.setTitle("Konfirmasi");
+
+        alert.setHeaderText(null);
+
+        alert.setContentText("Aktifkan kembali data supplier ini?");
+
+        Optional<ButtonType> pilih =
+                alert.showAndWait();
+
+        if (pilih.isPresent() &&
+                pilih.get() == ButtonType.OK) {
+
+            try {
+
+                pst = conn.prepareStatement(
+                        "UPDATE Supplier SET Status = ? WHERE ID_Supplier = ?");
+
+                pst.setString(1, "Tersedia");
+                pst.setString(2, txtIDSupplier.getText());
+
+                pst.executeUpdate();
+
+                alertInformation("Data berhasil diaktifkan kembali.");
 
                 refreshTable();
 
@@ -478,16 +525,6 @@ public class MasterSupplier implements Initializable {
             alertWarning("Nomor Telepon harus terdiri dari 13 digit angka.");
             txtTelepon.requestFocus();
             return false;
-        }
-
-        if (cmbStatus.getValue() == null) {
-
-            alertWarning("Status belum dipilih.");
-
-            cmbStatus.requestFocus();
-
-            return false;
-
         }
 
         return true;
